@@ -19,15 +19,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
-public class TabTwo extends Fragment {
-	private String URL = "http://www.ing.unisannio.it/avvisi/rss20.xml";
+public class TabThree extends Fragment {
+	private String URL = "http://www.economia.unisannio.it/index.php?option=com_rss&catid=1";
 	private ArrayList<NewsIng> news;
 	private NewsIngAdapter mAdapter;
 	private PullToRefreshListView mPullRefreshListView;
@@ -39,7 +39,7 @@ public class TabTwo extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.tabtwo, container, false);
+		View view = inflater.inflate(R.layout.tabthree, container, false);
 		mPullRefreshListView = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
 
 		// Set a listener to be invoked when the list should be refreshed.
@@ -62,7 +62,7 @@ public class TabTwo extends Fragment {
 		mAdapter = new NewsIngAdapter(getActivity(), news);
 
 		actualListView.setAdapter(mAdapter);
-
+		
 		actualListView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -71,7 +71,7 @@ public class TabTwo extends Fragment {
 				startActivity(i);
 			}
 		});
-
+		
 		return view;
 	}
 
@@ -86,9 +86,9 @@ public class TabTwo extends Fragment {
 				String title = e.select("title").first().text();
 				String description = e.select("description").first().text();
 				String link = e.select("link").first().text();
-				String pubDate = e.select("pubDate").first().text();
-
-				newsList.add(new NewsIng(title, link, description, pubDate, ""));
+				String author = e.select("author").first().text();
+				
+				newsList.add(new NewsIng(title, link, description, "", author));
 			}
 
 		} catch (SocketException e) {

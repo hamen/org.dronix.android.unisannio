@@ -26,10 +26,13 @@ public class MainActivity extends FragmentActivity {
 
 		Fragment tabOneFragment = new TabOne();
 		Fragment tabTwoFragment = new TabTwo();
+		Fragment tabThreeFragment = new TabThree();
 
 		PagerAdapter mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
 		mPagerAdapter.addFragment(tabOneFragment);
 		mPagerAdapter.addFragment(tabTwoFragment);
+		mPagerAdapter.addFragment(tabThreeFragment);
+		
 
 		// transaction = getSupportFragmentManager().beginTransaction();
 
@@ -55,9 +58,12 @@ public class MainActivity extends FragmentActivity {
 		Tab tab2 = ab.newTab().setText(getString(R.string.tabtwo))
 				.setTabListener(new TabListener<TabTwo>(this, "tabtwo", TabTwo.class));
 
+		Tab tab3 = ab.newTab().setText(getString(R.string.tabthree))
+				.setTabListener(new TabListener<TabThree>(this, "tabtree", TabThree.class));
+		
 		ab.addTab(tab1);
 		ab.addTab(tab2);
-
+		ab.addTab(tab3);
 	}
 
 	public static class TabListener<T extends Fragment> implements ActionBar.TabListener {

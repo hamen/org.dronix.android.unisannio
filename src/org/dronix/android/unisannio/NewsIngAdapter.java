@@ -44,7 +44,6 @@ public class NewsIngAdapter extends BaseAdapter {
 	
 		NewsIng n = data.get(position);
 
-		// Setting all values in listview
 		title.setText(n.getTitle());
 		date.setText(n.getPubDate());
 		return vi;
