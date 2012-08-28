@@ -16,10 +16,10 @@ public class LazyAdapter extends BaseAdapter {
 	private List<News> data;
 	private LayoutInflater inflater = null;
 
-	public LazyAdapter(Activity a, List<News> books) {
+	public LazyAdapter(Activity a, List<News> Newss) {
 		activity = a;
 		inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		this.data = books;
+		this.data = Newss;
 	}
 
 	public int getCount() {
