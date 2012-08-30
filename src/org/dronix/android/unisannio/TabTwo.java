@@ -57,7 +57,7 @@ public class TabTwo extends Fragment {
 		ListView actualListView = mPullRefreshListView.getRefreshableView();
 
 		news = new ArrayList<NewsIng>();
-		news.add(new NewsIng("Tira", "", null, null, ""));
+		news.add(new NewsIng(getString(R.string.pull), "", null, null, ""));
 
 		mAdapter = new NewsIngAdapter(getActivity(), news);
 

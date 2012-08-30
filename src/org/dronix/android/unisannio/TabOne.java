@@ -53,7 +53,7 @@ public class TabOne extends Fragment {
 		ListView actualListView = mPullRefreshListView.getRefreshableView();
 
 		news = new ArrayList<News>();
-		news.add(new News("Tira", ""));
+		news.add(new News("", getString(R.string.pull)));
 
 		mAdapter = new LazyAdapter(getActivity(), news);
 

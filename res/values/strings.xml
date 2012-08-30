@@ -2,12 +2,12 @@
 <resources>
 
     <string name="app_name">Unisannio</string>
+    <string name="pull">Tira</string>
     <string name="tabone">Ateneo</string>
     <string name="avvisi_ateneo">Avvisi Ateneo</string>
-    
     <string name="tabtwo">Ingegneria</string>
     <string name="avvisi_ingengeria">Avvisi Ingegneria</string>
-    
     <string name="tabthree">Giurisprudenza</string>
-	<string name="avvisi_giurisprudenza">Avvisi Giurisprudenza</string>
+    <string name="avvisi_giurisprudenza">Avvisi Giurisprudenza</string>
+
 </resources>
