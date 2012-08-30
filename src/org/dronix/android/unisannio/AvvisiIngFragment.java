@@ -26,7 +26,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
-public class TabTwo extends Fragment {
+public class AvvisiIngFragment extends Fragment {
 	private String URL = "http://www.ing.unisannio.it/avvisi/rss20.xml";
 	private ArrayList<NewsIng> news;
 	private NewsIngAdapter mAdapter;

@@ -14,35 +14,36 @@ public class GBNewsActivity extends FragmentActivity {
 		if (savedInstanceState == null) {
 			Bundle extras = getIntent().getExtras();
 			if (extras == null) {
-				tabnumber = -1 ;
+				tabnumber = -1;
 			} else {
 				tabnumber = extras.getInt("TABNUMBER");
 			}
-		} 
-		
+		}
 		Fragment myFragment = null;
 		switch (tabnumber) {
-		case 1:
+		case 0:
 			myFragment = new TabOne();
 			break;
-		case 2:
-			myFragment = new TabTwo();
+		case 1:
+			myFragment = new AvvisiIngFragment();
 			break;
-		case 3:
+		case 2:
 			myFragment = new TabThree();
 			break;
 		}
-		
-		// Create a frame layout, so we can add fragments to it.
-		FrameLayout layout = new FrameLayout(this);
-		layout.setId(0x1234);
 
-		// Set the frame layout as the view container for this activity.
-		setContentView(layout);
+		if (tabnumber != -1) {
+			// Create a frame layout, so we can add fragments to it.
+			FrameLayout layout = new FrameLayout(this);
+			layout.setId(0x1234);
 
-		// Create and add a fragment to frame layout created above.
-		FragmentTransaction t = getSupportFragmentManager().beginTransaction();
-		t.add(layout.getId(), myFragment, "myFirstFragment");
-		t.commit();
+			// Set the frame layout as the view container for this activity.
+			setContentView(layout);
+
+			// Create and add a fragment to frame layout created above.
+			FragmentTransaction t = getSupportFragmentManager().beginTransaction();
+			t.add(layout.getId(), myFragment, "myFirstFragment");
+			t.commit();
+		}
 	}
 }

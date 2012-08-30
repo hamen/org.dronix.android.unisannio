@@ -57,7 +57,7 @@ public class MainActivity extends FragmentActivity {
 		if (Build.VERSION.SDK_INT >= 11) {
 			setContentView(R.layout.main);
 			Fragment tabOneFragment = new TabOne();
-			Fragment tabTwoFragment = new TabTwo();
+			Fragment tabTwoFragment = new AvvisiIngFragment();
 			Fragment tabThreeFragment = new TabThree();
 
 			PagerAdapter mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
@@ -87,7 +87,7 @@ public class MainActivity extends FragmentActivity {
 					.setTabListener(new TabListener<TabOne>(this, "tabone", TabOne.class));
 
 			Tab tab2 = ab.newTab().setText(getString(R.string.tabtwo))
-					.setTabListener(new TabListener<TabTwo>(this, "tabtwo", TabTwo.class));
+					.setTabListener(new TabListener<AvvisiIngFragment>(this, "tabtwo", AvvisiIngFragment.class));
 
 			Tab tab3 = ab.newTab().setText(getString(R.string.tabthree))
 					.setTabListener(new TabListener<TabThree>(this, "tabtree", TabThree.class));
