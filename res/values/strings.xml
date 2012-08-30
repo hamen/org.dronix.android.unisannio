@@ -3,11 +3,21 @@
 
     <string name="app_name">Unisannio</string>
     <string name="pull">Tira</string>
+    <string name="avvisi">Avvisi</string>
     <string name="tabone">Ateneo</string>
     <string name="avvisi_ateneo">Avvisi Ateneo</string>
     <string name="tabtwo">Ingegneria</string>
     <string name="avvisi_ingengeria">Avvisi Ingegneria</string>
     <string name="tabthree">Giurisprudenza</string>
     <string name="avvisi_giurisprudenza">Avvisi Giurisprudenza</string>
+
+    <drawable name="white">#ffffff</drawable>
+    <drawable name="blue">#2554C7</drawable>
+    <drawable name="green">#347C2C</drawable>
+    <drawable name="orange">#ff9900</drawable>
+    <drawable name="pink">#FF00FF</drawable>
+    <drawable name="violet">#a020f0</drawable>
+    <drawable name="gray">#778899</drawable>
+    <drawable name="red">#C11B17</drawable>
 
 </resources>

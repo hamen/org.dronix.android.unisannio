@@ -1,6 +1,8 @@
 package org.dronix.android.unisannio;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -18,9 +20,9 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.SimpleExpandableListAdapter;
 
 @SuppressLint("NewApi")
 public class MainActivity extends FragmentActivity {
@@ -38,19 +40,35 @@ public class MainActivity extends FragmentActivity {
 		if (Build.VERSION.SDK_INT < 11) {
 			setContentView(R.layout.activity_main_old);
 
-			String[] feeds = { "Avvisi Ateneo", "Avvisi Ingegneria", "Avvisi Giurisprudenza" };
+			ExpandableListView feedList = (ExpandableListView) findViewById(R.id.list);
 
-			ListView feedList = (ListView) findViewById(R.id.feed_list);
-			ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-					android.R.layout.simple_list_item_1, feeds);
-			feedList.setAdapter(adapter);
+			SimpleExpandableListAdapter expListAdapter = new SimpleExpandableListAdapter(this,
+					createGroupList(), // Creating group List.
+					R.layout.group_row, // Group item layout XML.
+					new String[] { "Group Item" }, // the key of group item.
+					new int[] { R.id.row_name }, // ID of each group item.-Data
+													// under the key goes into
+													// this TextView.
+					createChildList(), // childData describes second-level
+										// entries.
+					R.layout.child_row, // Layout for sub-level entries(second
+										// level).
+					new String[] { "Sub Item" }, // Keys in childData maps to
+													// display.
+					new int[] { R.id.grp_child } // Data under the keys above go
+													// into these TextViews.
+			);
+
+			feedList.setAdapter(expListAdapter);
 			feedList.setTextFilterEnabled(true);
 
-			feedList.setOnItemClickListener(new OnItemClickListener() {
-				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+			feedList.setOnChildClickListener(new OnChildClickListener() {
+				public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
+						int childPosition, long id) {
 					Intent gbNews = new Intent(MainActivity.this, GBNewsActivity.class);
-					gbNews.putExtra("TABNUMBER", position);
-					startActivity(gbNews);					
+					gbNews.putExtra("TABNUMBER", childPosition);
+					startActivity(gbNews);
+					return false;
 				}
 			});
 		}
@@ -86,8 +104,12 @@ public class MainActivity extends FragmentActivity {
 			Tab tab1 = ab.newTab().setText(getString(R.string.tabone))
 					.setTabListener(new TabListener<TabOne>(this, "tabone", TabOne.class));
 
-			Tab tab2 = ab.newTab().setText(getString(R.string.tabtwo))
-					.setTabListener(new TabListener<AvvisiIngFragment>(this, "tabtwo", AvvisiIngFragment.class));
+			Tab tab2 = ab
+					.newTab()
+					.setText(getString(R.string.tabtwo))
+					.setTabListener(
+							new TabListener<AvvisiIngFragment>(this, "tabtwo",
+									AvvisiIngFragment.class));
 
 			Tab tab3 = ab.newTab().setText(getString(R.string.tabthree))
 					.setTabListener(new TabListener<TabThree>(this, "tabtree", TabThree.class));
@@ -146,17 +168,14 @@ public class MainActivity extends FragmentActivity {
 		}
 
 		public void onTabReselected(Tab arg0, android.app.FragmentTransaction arg1) {
-			// TODO Auto-generated method stub
 
 		}
 
 		public void onTabSelected(Tab arg0, android.app.FragmentTransaction arg1) {
-			// TODO Auto-generated method stub
 			mViewPager.setCurrentItem(arg0.getPosition());
 		}
 
 		public void onTabUnselected(Tab arg0, android.app.FragmentTransaction arg1) {
-			// TODO Auto-generated method stub
 
 		}
 	}
@@ -185,4 +204,30 @@ public class MainActivity extends FragmentActivity {
 		}
 	}
 
+	private List<HashMap<String, String>> createGroupList() {
+		ArrayList<HashMap<String, String>> result = new ArrayList<HashMap<String, String>>();
+		HashMap<String, String> m = new HashMap<String, String>();
+		m.put("Group Item", getString(R.string.avvisi));
+		result.add(m);
+
+		return (List<HashMap<String, String>>) result;
+	}
+
+	private List<ArrayList<HashMap<String, String>>> createChildList() {
+
+		ArrayList<ArrayList<HashMap<String, String>>> result = new ArrayList<ArrayList<HashMap<String, String>>>();
+		for (int i = 0; i < 15; ++i) {
+
+			String[] feeds = { "Ateneo", "Ingegneria", "Giurisprudenza" };
+
+			ArrayList<HashMap<String, String>> secList = new ArrayList<HashMap<String, String>>();
+			for (int n = 0; n < 3; n++) {
+				HashMap<String, String> child = new HashMap<String, String>();
+				child.put("Sub Item", feeds[n]);
+				secList.add(child);
+			}
+			result.add(secList);
+		}
+		return result;
+	}
 }
