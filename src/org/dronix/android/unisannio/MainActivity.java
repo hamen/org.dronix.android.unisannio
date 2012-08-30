@@ -2,9 +2,12 @@ package org.dronix.android.unisannio;
 
 import java.util.ArrayList;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -12,7 +15,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
+@SuppressLint("NewApi")
 public class MainActivity extends FragmentActivity {
 
 	FragmentTransaction transaction;
@@ -22,48 +32,70 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
 
-		Fragment tabOneFragment = new TabOne();
-		Fragment tabTwoFragment = new TabTwo();
-		Fragment tabThreeFragment = new TabThree();
+		Log.i("ANDROID API VERSION", String.valueOf(Build.VERSION.SDK_INT));
 
-		PagerAdapter mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
-		mPagerAdapter.addFragment(tabOneFragment);
-		mPagerAdapter.addFragment(tabTwoFragment);
-		mPagerAdapter.addFragment(tabThreeFragment);
-		
+		if (Build.VERSION.SDK_INT < 11) {
+			setContentView(R.layout.activity_main_old);
 
-		// transaction = getSupportFragmentManager().beginTransaction();
+			String[] feeds = { "Avvisi Ateneo", "Avvisi Ingegneria", "Avvisi Giurisprudenza" };
 
-		mViewPager = (ViewPager) findViewById(R.id.pager);
-		mViewPager.setAdapter(mPagerAdapter);
-		mViewPager.setOffscreenPageLimit(2);
-		mViewPager.setCurrentItem(0);
+			ListView feedList = (ListView) findViewById(R.id.feed_list);
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+					android.R.layout.simple_list_item_1, feeds);
+			feedList.setAdapter(adapter);
+			feedList.setTextFilterEnabled(true);
 
-		mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-			@Override
-			public void onPageSelected(int position) {
-				// When swiping between pages, select the
-				// corresponding tab.
-				getActionBar().setSelectedNavigationItem(position);
-			}
-		});
+			feedList.setOnItemClickListener(new OnItemClickListener() {
+				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+					Intent gbNews = new Intent(MainActivity.this, GBNewsActivity.class);
+					gbNews.putExtra("TABNUMBER", position);
+					startActivity(gbNews);					
+				}
+			});
+		}
+		if (Build.VERSION.SDK_INT >= 11) {
+			setContentView(R.layout.main);
+			Fragment tabOneFragment = new TabOne();
+			Fragment tabTwoFragment = new TabTwo();
+			Fragment tabThreeFragment = new TabThree();
 
-		ActionBar ab = getActionBar();
-		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		Tab tab1 = ab.newTab().setText(getString(R.string.tabone))
-				.setTabListener(new TabListener<TabOne>(this, "tabone", TabOne.class));
+			PagerAdapter mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
+			mPagerAdapter.addFragment(tabOneFragment);
+			mPagerAdapter.addFragment(tabTwoFragment);
+			mPagerAdapter.addFragment(tabThreeFragment);
 
-		Tab tab2 = ab.newTab().setText(getString(R.string.tabtwo))
-				.setTabListener(new TabListener<TabTwo>(this, "tabtwo", TabTwo.class));
+			// transaction = getSupportFragmentManager().beginTransaction();
 
-		Tab tab3 = ab.newTab().setText(getString(R.string.tabthree))
-				.setTabListener(new TabListener<TabThree>(this, "tabtree", TabThree.class));
-		
-		ab.addTab(tab1);
-		ab.addTab(tab2);
-		ab.addTab(tab3);
+			mViewPager = (ViewPager) findViewById(R.id.pager);
+			mViewPager.setAdapter(mPagerAdapter);
+			mViewPager.setOffscreenPageLimit(2);
+			mViewPager.setCurrentItem(0);
+
+			mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+				@Override
+				public void onPageSelected(int position) {
+					// When swiping between pages, select the
+					// corresponding tab.
+					getActionBar().setSelectedNavigationItem(position);
+				}
+			});
+
+			ActionBar ab = getActionBar();
+			ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+			Tab tab1 = ab.newTab().setText(getString(R.string.tabone))
+					.setTabListener(new TabListener<TabOne>(this, "tabone", TabOne.class));
+
+			Tab tab2 = ab.newTab().setText(getString(R.string.tabtwo))
+					.setTabListener(new TabListener<TabTwo>(this, "tabtwo", TabTwo.class));
+
+			Tab tab3 = ab.newTab().setText(getString(R.string.tabthree))
+					.setTabListener(new TabListener<TabThree>(this, "tabtree", TabThree.class));
+
+			ab.addTab(tab1);
+			ab.addTab(tab2);
+			ab.addTab(tab3);
+		}
 	}
 
 	public static class TabListener<T extends Fragment> implements ActionBar.TabListener {
