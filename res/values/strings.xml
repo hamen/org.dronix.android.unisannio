@@ -4,7 +4,9 @@
     <string name="app_name">Unisannio</string>
     <string name="pull">Tira</string>
     <string name="avvisi">Avvisi</string>
-    <string name="tabone">Ateneo</string>
+    <string name="ateneo">Ateneo</string>
+    <string name="ingegneria">Ingegneria</string>
+    <string name="giurisprudenza">Giurisprudenza</string>
     <string name="avvisi_ateneo">Avvisi Ateneo</string>
     <string name="tabtwo">Ingegneria</string>
     <string name="avvisi_ingengeria">Avvisi Ingegneria</string>

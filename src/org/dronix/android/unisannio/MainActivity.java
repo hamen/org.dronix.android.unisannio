@@ -19,52 +19,42 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.SimpleExpandableListAdapter;
 
 @SuppressLint("NewApi")
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity
+{
 
 	FragmentTransaction transaction;
 	static ViewPager mViewPager;
 
-	/** Called when the activity is first created. */
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 
 		Log.i("ANDROID API VERSION", String.valueOf(Build.VERSION.SDK_INT));
 
-		if (Build.VERSION.SDK_INT < 11) {
+		if (Build.VERSION.SDK_INT < 11)
+		{
 			setContentView(R.layout.activity_main_old);
 
 			ExpandableListView feedList = (ExpandableListView) findViewById(R.id.list);
 
 			SimpleExpandableListAdapter expListAdapter = new SimpleExpandableListAdapter(this,
-					createGroupList(), // Creating group List.
-					R.layout.group_row, // Group item layout XML.
-					new String[] { "Group Item" }, // the key of group item.
-					new int[] { R.id.row_name }, // ID of each group item.-Data
-													// under the key goes into
-													// this TextView.
-					createChildList(), // childData describes second-level
-										// entries.
-					R.layout.child_row, // Layout for sub-level entries(second
-										// level).
-					new String[] { "Sub Item" }, // Keys in childData maps to
-													// display.
-					new int[] { R.id.grp_child } // Data under the keys above go
-													// into these TextViews.
-			);
+					createGroupList(), R.layout.group_row, new String[] { "Group Item" },
+					new int[] { R.id.row_name }, createChildList(), R.layout.child_row,
+					new String[] { "Sub Item" }, new int[] { R.id.grp_child });
 
 			feedList.setAdapter(expListAdapter);
 			feedList.setTextFilterEnabled(true);
 
 			feedList.setOnChildClickListener(new OnChildClickListener() {
 				public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
-						int childPosition, long id) {
+						int childPosition, long id)
+				{
 					Intent gbNews = new Intent(MainActivity.this, GBNewsActivity.class);
 					gbNews.putExtra("TABNUMBER", childPosition);
 					startActivity(gbNews);
@@ -72,7 +62,8 @@ public class MainActivity extends FragmentActivity {
 				}
 			});
 		}
-		if (Build.VERSION.SDK_INT >= 11) {
+		if (Build.VERSION.SDK_INT >= 11)
+		{
 			setContentView(R.layout.main);
 			Fragment tabOneFragment = new TabOne();
 			Fragment tabTwoFragment = new AvvisiIngFragment();
@@ -83,8 +74,6 @@ public class MainActivity extends FragmentActivity {
 			mPagerAdapter.addFragment(tabTwoFragment);
 			mPagerAdapter.addFragment(tabThreeFragment);
 
-			// transaction = getSupportFragmentManager().beginTransaction();
-
 			mViewPager = (ViewPager) findViewById(R.id.pager);
 			mViewPager.setAdapter(mPagerAdapter);
 			mViewPager.setOffscreenPageLimit(2);
@@ -92,7 +81,8 @@ public class MainActivity extends FragmentActivity {
 
 			mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 				@Override
-				public void onPageSelected(int position) {
+				public void onPageSelected(int position)
+				{
 					// When swiping between pages, select the
 					// corresponding tab.
 					getActionBar().setSelectedNavigationItem(position);
@@ -101,7 +91,7 @@ public class MainActivity extends FragmentActivity {
 
 			ActionBar ab = getActionBar();
 			ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-			Tab tab1 = ab.newTab().setText(getString(R.string.tabone))
+			Tab tab1 = ab.newTab().setText(getString(R.string.ateneo))
 					.setTabListener(new TabListener<TabOne>(this, "tabone", TabOne.class));
 
 			Tab tab2 = ab
@@ -120,7 +110,8 @@ public class MainActivity extends FragmentActivity {
 		}
 	}
 
-	public static class TabListener<T extends Fragment> implements ActionBar.TabListener {
+	public static class TabListener<T extends Fragment> implements ActionBar.TabListener
+	{
 		private Fragment mFragment;
 		private final Activity mActivity;
 		private final String mTag;
@@ -144,43 +135,53 @@ public class MainActivity extends FragmentActivity {
 
 		/* The following are each of the ActionBar.TabListener callbacks */
 
-		public void onTabSelected(Tab tab, FragmentTransaction ft) {
+		public void onTabSelected(Tab tab, FragmentTransaction ft)
+		{
 			// Check if the fragment is already initialized
-			if (mFragment == null) {
+			if (mFragment == null)
+			{
 				// If not, instantiate and add it to the activity
 				mFragment = Fragment.instantiate(mActivity, mClass.getName());
 				ft.add(android.R.id.content, mFragment, mTag);
-			} else {
+			} else
+			{
 				// If it exists, simply attach it in order to show it
 				ft.attach(mFragment);
 			}
 		}
 
-		public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-			if (mFragment != null) {
+		public void onTabUnselected(Tab tab, FragmentTransaction ft)
+		{
+			if (mFragment != null)
+			{
 				// Detach the fragment, because another one is being attached
 				ft.detach(mFragment);
 			}
 		}
 
-		public void onTabReselected(Tab tab, FragmentTransaction ft) {
+		public void onTabReselected(Tab tab, FragmentTransaction ft)
+		{
 			// User selected the already selected tab. Usually do nothing.
 		}
 
-		public void onTabReselected(Tab arg0, android.app.FragmentTransaction arg1) {
+		public void onTabReselected(Tab arg0, android.app.FragmentTransaction arg1)
+		{
 
 		}
 
-		public void onTabSelected(Tab arg0, android.app.FragmentTransaction arg1) {
+		public void onTabSelected(Tab arg0, android.app.FragmentTransaction arg1)
+		{
 			mViewPager.setCurrentItem(arg0.getPosition());
 		}
 
-		public void onTabUnselected(Tab arg0, android.app.FragmentTransaction arg1) {
+		public void onTabUnselected(Tab arg0, android.app.FragmentTransaction arg1)
+		{
 
 		}
 	}
 
-	public class PagerAdapter extends FragmentPagerAdapter {
+	public class PagerAdapter extends FragmentPagerAdapter
+	{
 
 		private final ArrayList<Fragment> mFragments = new ArrayList<Fragment>();
 
@@ -188,23 +189,27 @@ public class MainActivity extends FragmentActivity {
 			super(manager);
 		}
 
-		public void addFragment(Fragment fragment) {
+		public void addFragment(Fragment fragment)
+		{
 			mFragments.add(fragment);
 			notifyDataSetChanged();
 		}
 
 		@Override
-		public int getCount() {
+		public int getCount()
+		{
 			return mFragments.size();
 		}
 
 		@Override
-		public Fragment getItem(int position) {
+		public Fragment getItem(int position)
+		{
 			return mFragments.get(position);
 		}
 	}
 
-	private List<HashMap<String, String>> createGroupList() {
+	private List<HashMap<String, String>> createGroupList()
+	{
 		ArrayList<HashMap<String, String>> result = new ArrayList<HashMap<String, String>>();
 		HashMap<String, String> m = new HashMap<String, String>();
 		m.put("Group Item", getString(R.string.avvisi));
@@ -213,15 +218,19 @@ public class MainActivity extends FragmentActivity {
 		return (List<HashMap<String, String>>) result;
 	}
 
-	private List<ArrayList<HashMap<String, String>>> createChildList() {
+	private List<ArrayList<HashMap<String, String>>> createChildList()
+	{
 
 		ArrayList<ArrayList<HashMap<String, String>>> result = new ArrayList<ArrayList<HashMap<String, String>>>();
-		for (int i = 0; i < 15; ++i) {
+		for (int i = 0; i < 15; ++i)
+		{
 
-			String[] feeds = { "Ateneo", "Ingegneria", "Giurisprudenza" };
+			String[] feeds = { getString(R.string.ateneo), getString(R.string.ingegneria),
+					getString(R.string.giurisprudenza) };
 
 			ArrayList<HashMap<String, String>> secList = new ArrayList<HashMap<String, String>>();
-			for (int n = 0; n < 3; n++) {
+			for (int n = 0; n < 3; n++)
+			{
 				HashMap<String, String> child = new HashMap<String, String>();
 				child.put("Sub Item", feeds[n]);
 				secList.add(child);
