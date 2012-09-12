@@ -5,13 +5,12 @@
     <string name="pull">Tira</string>
     <string name="avvisi">Avvisi</string>
     <string name="ateneo">Ateneo</string>
-    <string name="ingegneria">Ingegneria</string>
-    <string name="giurisprudenza">Giurisprudenza</string>
     <string name="avvisi_ateneo">Avvisi Ateneo</string>
     <string name="tabtwo">Ingegneria</string>
     <string name="avvisi_ingengeria">Avvisi Ingegneria</string>
     <string name="tabthree">Giurisprudenza</string>
     <string name="avvisi_giurisprudenza">Avvisi Giurisprudenza</string>
+    <string name="portals">Portali</string>
 
     <drawable name="white">#ffffff</drawable>
     <drawable name="blue">#2554C7</drawable>
@@ -21,5 +20,15 @@
     <drawable name="violet">#a020f0</drawable>
     <drawable name="gray">#778899</drawable>
     <drawable name="red">#C11B17</drawable>
+
+    <string name="menu_settings">Impostazioni</string>
+    <string name="title_activity_home">Unisannio</string>
+
+    <!-- Facolta` -->
+    <string name="faculties">Facolta`</string>
+    <string name="ingegneria">Ingegneria</string>
+    <string name="giurisprudenza">Giurisprudenza</string>
+    <string name="sea">S.E.A.</string>
+    <string name="scienze">Scienze MM.FF.NN.</string>
 
 </resources>
