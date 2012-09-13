@@ -27,7 +27,7 @@ public class AteneoHomeActivity extends Activity
 			public void onClick(View v)
 			{
 				Intent gbNews = new Intent(ac, GBNewsActivity.class);
-				gbNews.putExtra("TABNUMBER", 1);
+				gbNews.putExtra("TABNUMBER", 0);
 				startActivity(gbNews);
 			}
 		});
