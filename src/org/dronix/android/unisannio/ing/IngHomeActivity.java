@@ -2,13 +2,10 @@ package org.dronix.android.unisannio.ing;
 
 import org.dronix.android.unisannio.GBNewsActivity;
 import org.dronix.android.unisannio.R;
-import org.dronix.android.unisannio.R.id;
-import org.dronix.android.unisannio.R.layout;
-import org.dronix.android.unisannio.R.string;
+import org.dronix.android.unisannio.UnisannioMapActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -57,6 +54,10 @@ public class IngHomeActivity extends Activity
 					startActivity(gbNews);
 					break;
 				case 1:
+					Intent ingMap = new Intent(ac, UnisannioMapActivity.class);
+					ingMap.putExtra("faculty", 1);
+					startActivity(ingMap);
+					break;
 				case 3:
 				case 4:
 				case 5:

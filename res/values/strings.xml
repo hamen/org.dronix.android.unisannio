@@ -15,7 +15,6 @@
     <string name="lastname">Cognome</string>
     <string name="search">Cerca</string>
     <string name="searching">Ricerca in corso</string>
-    
     <string name="menu_settings">Impostazioni</string>
     <string name="title_activity_home">Unisannio</string>
 
@@ -34,5 +33,8 @@
     <string name="twitter">Twitter</string>
     <string name="contatti">Contatti</string>
     <string name="aule">Gestione aule</string>
+    <string name="title_activity_ing_map">Mappa</string>
+    <string name="satellite">Satellite ON/OFF</string>
+    
 
 </resources>
