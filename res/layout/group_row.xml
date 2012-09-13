@@ -7,7 +7,7 @@
     <TextView android:id="@+id/row_name"
          android:paddingLeft="50px"
          android:textSize="35dp"
-         android:textColor="@drawable/blue"
+         android:textColor="@color/blue"
          android:textStyle="normal"
          android:layout_width="fill_parent"
          android:layout_height="wrap_content"/>

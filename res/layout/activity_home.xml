@@ -5,38 +5,106 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/news_title"
-        style="@style/header"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="@string/avvisi"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <ListView
-        android:id="@+id/news_list"
-        style="@style/list_view_wh"
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp" >
-    </ListView>
+        android:layout_height="wrap_content" >
 
-    <TextView
-        android:id="@+id/portal_title"
-        style="@style/header"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="@string/portals"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-    <ListView
-        android:id="@+id/portal_list"
-        style="@style/list_view_wh"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp" >
-    </ListView>
+            <TextView
+                android:id="@+id/news_title"
+                style="@style/header"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/avvisi"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/ateneo_avvisi"
+                style="@style/list_view_wh_top"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="@string/ateneo" />
+
+            <TextView
+                android:id="@+id/ingegneria_avvisi"
+                style="@style/list_view_wh_middle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="@string/ingegneria" />
+
+            <TextView
+                android:id="@+id/giurisprudenza_avvisi"
+                style="@style/list_view_wh_bottom"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="@string/giurisprudenza" />
+
+            <TextView
+                android:id="@+id/portal_title"
+                style="@style/header"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/portals"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/ateneo"
+                style="@style/list_view_wh_top"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="@string/ateneo" />
+
+            <TextView
+                android:id="@+id/ingegneria"
+                style="@style/list_view_wh_middle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="@string/ingegneria" />
+
+            <TextView
+                android:id="@+id/giurisprudenza"
+                style="@style/list_view_wh_middle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="@string/giurisprudenza" />
+
+            <TextView
+                android:id="@+id/sea"
+                style="@style/list_view_wh_middle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="@string/sea" />
+
+            <TextView
+                android:id="@+id/sci"
+                style="@style/list_view_wh_bottom"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="@string/scienze" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

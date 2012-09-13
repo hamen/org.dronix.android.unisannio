@@ -17,5 +17,27 @@
         <item name="android:height">30dp</item>
         <item name="android:gravity">center_vertical|center_horizontal</item>
         <item name="android:background">@layout/rounded_yl</item>
-    </style>    
+    </style>
+
+    <style name="list_view_wh_top">
+        <item name="android:padding">5dp</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@layout/rounded_top_bl</item>
+    </style>
+
+    <style name="list_view_wh_middle">
+        <item name="android:padding">5dp</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@layout/list_row_middle_bl</item>
+    </style>
+
+    <style name="list_view_wh_bottom">
+        <item name="android:padding">5dp</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@layout/rounded_bottom_bl</item>
+    </style>
+
 </resources>

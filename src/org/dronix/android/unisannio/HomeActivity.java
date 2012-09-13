@@ -1,15 +1,15 @@
 package org.dronix.android.unisannio;
 
+import org.dronix.android.unisannio.ing.IngHomeActivity;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 public class HomeActivity extends Activity
 {
@@ -28,79 +28,92 @@ public class HomeActivity extends Activity
 		setContentView(R.layout.activity_home);
 		this.ac = this;
 
-		ListView news_list = (ListView) findViewById(R.id.news_list);
-		ListView portal_list = (ListView) findViewById(R.id.portal_list);
+		TextView ateneo_avvisi_tv = (TextView) findViewById(R.id.ateneo_avvisi);
+		TextView ingegneria_avvisi_tv = (TextView) findViewById(R.id.ingegneria_avvisi);
+		TextView giurisprudenza_avvisi_tv = (TextView) findViewById(R.id.giurisprudenza_avvisi);
 
-		// @verbatim
-		final String[] news_labels = new String[] { 
-				getString(R.string.ateneo),
-				getString(R.string.ingegneria),
-				getString(R.string.giurisprudenza)	
-		};
-		// @/verbatim
+		ateneo_avvisi_tv.setOnClickListener(new OnClickListener() {
 
-		// @verbatim
-		final String[] portal_labels = new String[] { 
-				getString(R.string.ateneo),
-				getString(R.string.ingegneria),
-				getString(R.string.giurisprudenza),
-				getString(R.string.sea),
-				getString(R.string.scienze)
-		};
-		// @/verbatim
-
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.home_news_list_row,
-				R.id.item, news_labels);
-
-		// Assign adapter to ListView
-		news_list.setAdapter(adapter);
-
-		news_list.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+			public void onClick(View v)
 			{
 				Intent gbNews = new Intent(HomeActivity.this, GBNewsActivity.class);
-				gbNews.putExtra("TABNUMBER", position);
+				gbNews.putExtra("TABNUMBER", 0);
+				startActivity(gbNews);
+			}
+		});
+		ingegneria_avvisi_tv.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v)
+			{
+				Intent gbNews = new Intent(HomeActivity.this, GBNewsActivity.class);
+				gbNews.putExtra("TABNUMBER", 1);
+				startActivity(gbNews);
+			}
+		});
+		giurisprudenza_avvisi_tv.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v)
+			{
+				Intent gbNews = new Intent(HomeActivity.this, GBNewsActivity.class);
+				gbNews.putExtra("TABNUMBER", 2);
 				startActivity(gbNews);
 			}
 		});
 
-		ArrayAdapter<String> faculties_adapter = new ArrayAdapter<String>(this,
-				R.layout.home_news_list_row, R.id.item, portal_labels);
+		TextView ateneo_tv = (TextView) findViewById(R.id.ateneo);
+		TextView ingegneria_tv = (TextView) findViewById(R.id.ingegneria);
+		TextView giurisprudenza_tv = (TextView) findViewById(R.id.giurisprudenza);
+		TextView sea_tv = (TextView) findViewById(R.id.sea);
+		TextView scienze_tv = (TextView) findViewById(R.id.sci);
 
-		// Assign adapter to ListView
-		portal_list.setAdapter(faculties_adapter);
+		ateneo_tv.setOnClickListener(new OnClickListener() {
 
-		portal_list.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+			public void onClick(View v)
 			{
-				String url = "";
-
-				switch (position) {
-				case 0:
-					url = ATENEO_URL;
-					break;
-				case 1:
-					url = INGEGNERIA_URL;
-					break;
-				case 2:
-					url = GIURISPRUDENZA_URL;
-					break;
-				case 3:
-					url = SEA_URL;
-					break;
-				case 4:
-					url = SCI_URL;
-					break;
-				default:
-					break;
-				}
-				
-				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ATENEO_URL));
 				startActivity(browserIntent);
 			}
 		});
+		ingegneria_tv.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v)
+			{
+				Intent ing = new Intent(ac, IngHomeActivity.class);
+				ac.startActivity(ing);
+			}
+		});
+		giurisprudenza_tv.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v)
+			{
+				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(GIURISPRUDENZA_URL));
+				startActivity(browserIntent);
+			}
+		});
+		sea_tv.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v)
+			{
+				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(SEA_URL));
+				startActivity(browserIntent);
+			}
+		});
+		scienze_tv.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v)
+			{
+				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(SCI_URL));
+				startActivity(browserIntent);
+			}
+		});		
 	}
 
 	@Override
