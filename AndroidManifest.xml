@@ -37,6 +37,7 @@
             android:windowSoftInputMode="stateVisible|adjustPan" >
         </activity>        
         <activity android:name=".UnisannioMapActivity"></activity>
+        <activity android:name="AteneoHomeActivity"></activity>
     </application>
 
 </manifest>

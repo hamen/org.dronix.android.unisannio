@@ -3,7 +3,6 @@ package org.dronix.android.unisannio;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dronix.android.unisannio.ing.IngMapItemizedOverlay;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -31,7 +30,7 @@ public class UnisannioMapActivity extends MapActivity
 
 		List<Overlay> mapOverlays = mapView.getOverlays();
 		Drawable drawable = this.getResources().getDrawable(R.drawable.grad_hat);
-		IngMapItemizedOverlay itemizedoverlay = new IngMapItemizedOverlay(drawable, this);
+		UniMapItemizedOverlay itemizedoverlay = new UniMapItemizedOverlay(drawable, this);
 
 		List<UniPoint> points = new ArrayList<UniPoint>();
 
@@ -44,6 +43,7 @@ public class UnisannioMapActivity extends MapActivity
 
 		switch (faculty) {
 		case 0:
+			points = UnisannioMaps.INSTANCE.getAteneo();
 			break;
 		case 1:
 			points = UnisannioMaps.INSTANCE.getIngegneria();

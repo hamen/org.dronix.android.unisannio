@@ -74,8 +74,8 @@ public class HomeActivity extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ATENEO_URL));
-				startActivity(browserIntent);
+				Intent ateneo = new Intent(ac, AteneoHomeActivity.class);
+				startActivity(ateneo);
 			}
 		});
 		ingegneria_tv.setOnClickListener(new OnClickListener() {

@@ -17,7 +17,8 @@
     <string name="searching">Ricerca in corso</string>
     <string name="menu_settings">Impostazioni</string>
     <string name="title_activity_home">Unisannio</string>
-
+    <string name="website">Sito WEB</string>
+    
     <!-- Facolta` -->
     <string name="faculties">Facolta`</string>
     <string name="ingegneria">Ingegneria</string>
@@ -35,6 +36,5 @@
     <string name="aule">Gestione aule</string>
     <string name="title_activity_ing_map">Mappa</string>
     <string name="satellite">Satellite ON/OFF</string>
-    
 
 </resources>
