@@ -26,7 +26,18 @@ public enum UnisannioMaps {
 		lat = 41.13057495607544;
 		lng = 14.777654707431793;
 		points.add(new UniPoint(faculty, "Dipartimento", "Piazza Roma", lat, lng));
+
+		// San Vittorino
+		lat = 41.129754719978685;
+		lng = 14.778901934623718;
+		points.add(new UniPoint(faculty, "San Vittorino", "Via Tenente Pellegrini", lat, lng));
 		
+		// Labis
+		lat = 41.130075946666736;
+		lng = 14.7776198387146;
+		points.add(new UniPoint(faculty, "Labis", "Via Odofredo", lat, lng));
+		return points;
+	}
 		return points;
 	}
 }
