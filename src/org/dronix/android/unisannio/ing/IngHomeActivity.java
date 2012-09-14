@@ -31,8 +31,8 @@ public class IngHomeActivity extends Activity
 				getString(R.string.mappa),
 				getString(R.string.cercapersone),
 				getString(R.string.eventi),
-				getString(R.string.aule),
-				getString(R.string.galleria),
+/*				getString(R.string.aule),
+				getString(R.string.galleria),*/
 				getString(R.string.contatti)
 		};
 		// @/verbatim
@@ -58,17 +58,22 @@ public class IngHomeActivity extends Activity
 					ingMap.putExtra("faculty", 1);
 					startActivity(ingMap);
 					break;
+				case 2:
+					Intent cercaPersone = new Intent(ac, IngCercaPersone.class);
+					ac.startActivity(cercaPersone);
+					break;
 				case 3:
 					Intent eventi = new Intent(ac, IngEventiActivity.class);
 					ac.startActivity(eventi);
 					break;
 				case 4:
 				case 5:
-					comingSoon();
-					break;
-				case 2:
-					Intent cercaPersone = new Intent(ac, IngCercaPersone.class);
-					ac.startActivity(cercaPersone);
+				case 6:
+	                Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+	                String[] recipients = new String[]{"webmaster.ingegneria@unisannio.it", "",};
+	                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, recipients);
+	                emailIntent.setType("message/rfc822");
+	                startActivity(Intent.createChooser(emailIntent, getString(R.string.mail_choice)));
 					break;
 				default:
 					break;
