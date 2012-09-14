@@ -59,6 +59,9 @@ public class IngHomeActivity extends Activity
 					startActivity(ingMap);
 					break;
 				case 3:
+					Intent eventi = new Intent(ac, IngEventiActivity.class);
+					ac.startActivity(eventi);
+					break;
 				case 4:
 				case 5:
 					comingSoon();

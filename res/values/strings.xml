@@ -18,7 +18,7 @@
     <string name="menu_settings">Impostazioni</string>
     <string name="title_activity_home">Unisannio</string>
     <string name="website">Sito WEB</string>
-    
+    <string name="loading">Caricamento…</string>
     <!-- Facolta` -->
     <string name="faculties">Facolta`</string>
     <string name="ingegneria">Ingegneria</string>
