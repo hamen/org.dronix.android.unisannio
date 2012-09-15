@@ -18,7 +18,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -42,7 +41,7 @@ public class IngCercaPersone extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ingcercapersone);
 		this.ac = this;
-		
+
 		EditText name_input = (EditText) findViewById(R.id.name_input);
 		name_input.setSelected(true);
 
@@ -61,20 +60,21 @@ public class IngCercaPersone extends Activity
 
 				if (name != null && lastname != null)
 				{
-					
+
 					String[] params = { name.trim(), lastname.trim() };
 					try
 					{
 						people = new PeopleRetriever().execute(params).get();
-						
-						if (people != null) {
+
+						if (people != null)
+						{
 							LinearLayout form = (LinearLayout) findViewById(R.id.form);
 							form.setVisibility(View.GONE);
-							
+
 							ListView result = (ListView) findViewById(R.id.result);
 							LazyAdapter adapter = new LazyAdapter(ac, people);
 							result.setAdapter(adapter);
-							
+
 						}
 					} catch (InterruptedException e)
 					{
@@ -93,11 +93,11 @@ public class IngCercaPersone extends Activity
 		@Override
 		protected void onPreExecute()
 		{
-	        progressDialog = new ProgressDialog(IngCercaPersone.this); 
-	        progressDialog.setMessage(getString(R.string.searching)); 
-	        progressDialog.setIndeterminate(true); 
-	        progressDialog.setCancelable(false); 
-	        progressDialog.show(); 
+			progressDialog = new ProgressDialog(IngCercaPersone.this);
+			progressDialog.setMessage(getString(R.string.searching));
+			progressDialog.setIndeterminate(true);
+			progressDialog.setCancelable(false);
+			progressDialog.show();
 		}
 
 		@Override
@@ -141,41 +141,47 @@ public class IngCercaPersone extends Activity
 						{
 							for (Element person : p)
 							{
-								String name = person.select("strong").first().text();
-								String qualifica = person.select("em").first().text()
-										.replace("- ", "");
-								String description = person.text().replace(name, "")
-										.replace(qualifica, "");
+								Element strong = person.select("strong").first();
 
-								String[] tokens = description.split("pbx");
-								String address = tokens[0].replace("-  ", "").trim();
-
-								tokens = tokens[1].replace(address, "").split("fax");
-								String pbx = tokens[0].trim();
-
-								// Log.i(TAG, name);
-								// Log.i(TAG, qualifica);
-								// Log.i(TAG, address);
-								// Log.i(TAG, pbx);
-
-								tokens = tokens[1].replace(pbx, "").split("email");
-								String fax = tokens[0].trim();
-								// Log.i(TAG, fax);
-
-								// Log.i(TAG, tokens[0] + " ------- " +
-								// tokens[1]);
-								String email = tokens[1].trim().replace(" [at] ", "@")
-										.replace(" - Home Page", "");
-								// Log.i(TAG, email);
-
-								Element homepage = person.select("a").first();
-								String url = null;
-								if (homepage != null)
+								if (strong != null)
 								{
-									url = homepage.attr("href");
-									// Log.i(TAG, url);
+									String name = strong.text();
+									String qualifica = person.select("em").first().text()
+											.replace("- ", "");
+									String description = person.text().replace(name, "")
+											.replace(qualifica, "");
+
+									String[] tokens = description.split("pbx");
+									String address = tokens[0].replace("-  ", "").trim();
+
+									tokens = tokens[1].replace(address, "").split("fax");
+									String pbx = tokens[0].trim();
+
+									// Log.i(TAG, name);
+									// Log.i(TAG, qualifica);
+									// Log.i(TAG, address);
+									// Log.i(TAG, pbx);
+
+									tokens = tokens[1].replace(pbx, "").split("email");
+									String fax = tokens[0].trim();
+									// Log.i(TAG, fax);
+
+									// Log.i(TAG, tokens[0] + " ------- " +
+									// tokens[1]);
+									String email = tokens[1].trim().replace(" [at] ", "@")
+											.replace(" - Home Page", "");
+									// Log.i(TAG, email);
+
+									Element homepage = person.select("a").first();
+									String url = null;
+									if (homepage != null)
+									{
+										url = homepage.attr("href");
+										// Log.i(TAG, url);
+									}
+									peopleList.add(new Person(name, qualifica, address, pbx, fax,
+											url));
 								}
-								peopleList.add(new Person(name, qualifica, address, pbx, fax, url));
 							}
 						}
 					}
