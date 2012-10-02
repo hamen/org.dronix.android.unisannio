@@ -1,7 +1,16 @@
-package org.dronix.android.unisannio;
+package org.dronix.android.unisannio.activity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.dronix.android.unisannio.R;
+import org.dronix.android.unisannio.UniMapItemizedOverlay;
+import org.dronix.android.unisannio.UniPoint;
+import org.dronix.android.unisannio.UnisannioMaps;
+import org.dronix.android.unisannio.R.drawable;
+import org.dronix.android.unisannio.R.id;
+import org.dronix.android.unisannio.R.layout;
+import org.dronix.android.unisannio.R.menu;
 
 
 import android.graphics.drawable.Drawable;

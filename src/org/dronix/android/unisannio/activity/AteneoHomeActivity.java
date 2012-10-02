@@ -1,4 +1,8 @@
-package org.dronix.android.unisannio;
+package org.dronix.android.unisannio.activity;
+
+import org.dronix.android.unisannio.R;
+import org.dronix.android.unisannio.R.id;
+import org.dronix.android.unisannio.R.layout;
 
 import android.app.Activity;
 import android.content.Intent;

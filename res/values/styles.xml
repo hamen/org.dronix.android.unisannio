@@ -10,6 +10,7 @@
 
     <style name="layout_wh">
         <item name="android:background">@drawable/gradient_bg</item>
+        <item name="ptrHeaderTextColor">@color/unisannio_blue</item>
     </style>
 
     <style name="header">

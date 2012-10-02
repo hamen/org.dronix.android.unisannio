@@ -1,8 +1,8 @@
 package org.dronix.android.unisannio.ing;
 
-import org.dronix.android.unisannio.GBNewsActivity;
 import org.dronix.android.unisannio.R;
-import org.dronix.android.unisannio.UnisannioMapActivity;
+import org.dronix.android.unisannio.activity.GBNewsActivity;
+import org.dronix.android.unisannio.activity.UnisannioMapActivity;
 
 import android.app.Activity;
 import android.content.Intent;

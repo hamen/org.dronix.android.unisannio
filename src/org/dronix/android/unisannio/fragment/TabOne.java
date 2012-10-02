@@ -1,14 +1,22 @@
-package org.dronix.android.unisannio;
+package org.dronix.android.unisannio.fragment;
 
 import java.io.IOException;
 import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dronix.android.unisannio.LazyAdapter;
+import org.dronix.android.unisannio.News;
+import org.dronix.android.unisannio.R;
+import org.dronix.android.unisannio.R.id;
+import org.dronix.android.unisannio.R.layout;
+import org.dronix.android.unisannio.R.string;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+import android.content.res.TypedArray;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -37,15 +45,15 @@ public class TabOne extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.tabone, container, false);
 		mPullRefreshListView = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
-
+	    
 		// Set a listener to be invoked when the list should be refreshed.
 		mPullRefreshListView.setOnRefreshListener(new OnRefreshListener<ListView>() {
 			@Override
-			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+			public void onRefresh(PullToRefreshBase<ListView> refreshView) {				
 				mPullRefreshListView.setLastUpdatedLabel(DateUtils.formatDateTime(getActivity(),
 						System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME
 								| DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL));
-
+				
 				new NewsRetriever().execute();
 			}
 		});

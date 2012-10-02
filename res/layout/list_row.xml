@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/list_selector"
-    android:minHeight="100dp"
+    android:minHeight="80dp"
     android:orientation="horizontal"
     android:padding="5dip" >
 
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:textColor="#343434"
-            android:textSize="14dip" />
+            android:textSize="12dip" />
 
         <TextView
             android:id="@+id/title"
@@ -44,7 +44,7 @@
             android:layout_gravity="left"
             android:gravity="top"
             android:textColor="#040404"
-            android:textSize="20dip"
+            android:textSize="15dip"
             android:textStyle="bold"
             android:typeface="sans" />
     </LinearLayout>

@@ -1,4 +1,8 @@
-package org.dronix.android.unisannio;
+package org.dronix.android.unisannio.activity;
+
+import org.dronix.android.unisannio.fragment.AvvisiIngFragment;
+import org.dronix.android.unisannio.fragment.TabOne;
+import org.dronix.android.unisannio.fragment.TabThree;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

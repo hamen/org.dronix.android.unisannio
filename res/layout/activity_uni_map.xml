@@ -3,6 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <!-- DEBUG -->
+    <!--
+         <com.google.android.maps.MapView
+        android:id="@+id/mapview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:apiKey="0L1ZEjljGhHqBLJ-eV1gqoxsHm6QXpALvG-qbJw"
+        android:clickable="true"
+        android:enabled="true" />
+    -->
+	
+	<!-- RELEASE -->
     <com.google.android.maps.MapView
         android:id="@+id/mapview"
         android:layout_width="fill_parent"
