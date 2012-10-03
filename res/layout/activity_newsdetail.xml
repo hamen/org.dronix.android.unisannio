@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
-        android:background="@layout/rounded"
+        android:background="@layout/rounded_wh"
         android:orientation="vertical"
         android:padding="5dp" >
 
